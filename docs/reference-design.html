@@ -1,0 +1,179 @@
+Final Merged Prompt
+
+Role: You are an expert full-stack engineer.
+Goal: Generate a production-ready, dark-mode-only web application that combines:
+
+    A URL shortener with per-link countdown interstitial and admin/user dashboards.
+
+    A modern CRM dashboard with multiple pages and data visualizations.
+
+Tech Stack & Constraints
+
+    Framework: Next.js 15 App Router (TypeScript), src/-less app directory routing.
+
+    Auth: Clerk (email/password + sessions).
+
+    Database: Neon (Postgres) via Prisma ORM + Prisma Studio.
+
+    UI: Tailwind CSS + shadcn/ui.
+
+    Charts: Recharts (colors from theme tokens).
+
+    Icons: lucide-react.
+
+    Development: Docker + docker-compose for local dev.
+
+    Tests: Jest for slug generation & expiry logic.
+
+    Rules:
+
+        Dark mode only — <html class="dark"> + color-scheme: dark.
+
+        No inline styles; use Tailwind tokens + CSS variables only.
+
+        Fully responsive (offcanvas sidebar on mobile, collapsible on desktop).
+
+        No ESLint or TypeScript errors.
+
+        Accessibility-compliant (aria labels, focus rings, keyboard nav).
+
+Global Theming
+
+    Use shadcn tokens for backgrounds, text, borders, and surfaces:
+
+        Background/Foreground: bg-background, text-foreground, text-muted-foreground.
+
+        Surfaces: bg-card, text-card-foreground, border-border, bg-popover, text-popover-foreground, bg-muted.
+
+        Actions: bg-primary, text-primary-foreground, bg-destructive, outline-ring/50.
+
+    Fonts: Geist and Geist Mono.
+
+    Metadata:
+
+        APP_TITLE = "NovaCRM"
+
+        APP_DESCRIPTION = "Modern, dark-first CRM dashboard"
+
+        BRAND_NAME = "NovaCRM"
+
+        BRAND_INITIAL = "N"
+
+Core Layout (CRMLayout)
+
+    Sidebar:
+
+        Brand badge & name.
+
+        Search input.
+
+        Menu items: Dashboard, Projects, Calendar, Leave Management, Settings, Notifications, Help Center, Performance, Payrolls, Invoices, Employees, Recruitment.
+
+    Top bar:
+
+        Sidebar toggle (Cmd/Ctrl+B shortcut).
+
+        Page title.
+
+        Segmented buttons (Overview, Order, Sales).
+
+        Right-aligned: search, mail, bell (with unread dot), avatar, “Invite” button.
+
+    Content area: Renders selected page.
+
+Main Pages
+1. URL Shortener
+
+    Shorten form, link cards, countdown interstitial.
+
+    Admin dashboard: view stats, configure per-link timers.
+
+    User dashboard: view own links.
+
+2. Dashboard (CRM)
+
+    KPI cards (Payrolls Cost, Total Expense, Pending Payments, Total Payrolls).
+
+    Charts: Sales Performance (bar), Email Metrics (line).
+
+    Table: Team Directory (avatar, name, email, role, dept, status, actions).
+
+3. Projects
+
+    Stats row, search/filter, “New Project” button.
+
+    Cards: name, description, status badge, priority badge, progress bar, due date, spend/budget, team avatars.
+
+4. Calendar
+
+    Month header + “New Event”.
+
+    Calendar grid (highlight today).
+
+    Sidebar: Today’s Events & Upcoming Events.
+
+5. Employees
+
+    Stats row.
+
+    Table: avatar, contact, role, dept, status, join date, salary.
+
+6. Performance
+
+    Metrics row with trend indicators.
+
+    Charts: Area (Performance Trend), Bar (Goals Progress).
+
+    Team list: score, grade badge, progress.
+
+7. Invoices
+
+    Stats row.
+
+    Table: invoice id, client, amount, dates, status, actions.
+
+8. Payrolls
+
+    Stats row.
+
+    Table: salary, bonuses, deductions, net pay, status.
+
+9. Leave Management
+
+    Stats row.
+
+    Table: leave type, duration, status, dates, actions.
+
+10. Recruitment
+
+    Job Openings (left).
+
+    Recent Candidates (right) with search & status badges.
+
+11. Notifications
+
+    Stats row.
+
+    List: icon, title, description, status badges, actions.
+
+12. Help Center
+
+    Search hero.
+
+    Categories grid.
+
+    Popular articles list.
+
+    Contact support section.
+
+Component Usage
+
+    Use shadcn/ui: Avatar, Badge, Button, Card, Input, Label, Progress, Separator, Sheet, Table, Tooltip, Switch, Sidebar (custom).
+
+    Badges: status-dependent Tailwind semantic colors.
+
+    Inputs: bg-muted, border-border, placeholder:text-muted-foreground.
+
+    Buttons: Primary, Outline, Ghost (theme-consistent).
+
+    Charts: Themed axes/grid/tooltips; gradients from CSS vars

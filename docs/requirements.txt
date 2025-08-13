@@ -1,0 +1,27 @@
+app/
+  layout.tsx        # injects dark mode, fonts, metadata
+  page.tsx          # CRMLayout -> Dashboard
+  globals.css       # Tailwind + dark theme vars
+  dashboard/        # CRM dashboard
+  admin/            # Admin dashboard (URL shortener)
+  api/              # shorten, stats, admin APIs
+  [slug]/           # Redirect page with countdown
+components/
+  crm-layout.tsx
+  Header.tsx
+  ShortenForm.tsx
+  LinkCard.tsx
+  Countdown.tsx
+  ui/
+pages/
+  (CRM pages listed above)
+hooks/
+  use-mobile.ts
+lib/
+  prisma.ts
+  slug.ts
+  clerk.ts
+  utils.ts
+tests/
+  slug.test.ts
+  expiry.test.ts
